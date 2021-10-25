@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script src="js/pixi.min.js"></script>
+    <script>
+		var app = new PIXI.Application(500,400);
+        document.body.appendChild(app.view);
+        
+        var bg = new PIXI.Sprite.fromImage("res/bg.jpeg");
+        app.stage.addChild(bg);
+        
+        var welcome1 = new PIXI.Text("美食篇");    
+        welcome1.x = 300;
+        welcome1.y = 200;
+        welcome1.style.fill = 0xffDAB9;//设置字体颜色    
+        welcome1.style.fontSize = 50;//设置字体大小    
+        welcome1.style.fontWeight = "bold";//加粗    
+        welcome1.style.fontStyle = "italic";//斜体    
+        welcome1.style.fontFamily = "行书";//设置字体    
+
+        app.stage.addChild(welcome1);   
+        welcome1.interactive = true;
+        welcome1.on("click",enter);
+        function enter(){
+        	welcome1.visible = false;
+        	left2.visible = true;
+        	right2.visible = true;
+        	endpose.visible = false;
+        }
+        
+        var welcome = new PIXI.Text("欢迎来到四川");    
+        welcome.x = -250;
+        welcome.y = -100;
+        welcome.style.fill = 0xffDAFB;//设置字体颜色    
+
+        welcome.style.fontSize = 60;//设置字体大小    
+
+        welcome.style.fontWeight = "bold";//加粗    
+
+        welcome.style.fontStyle = "italic";//斜体    
+
+        welcome.style.fontFamily = "行书";//设置字体    
+
+        welcome1.addChild(welcome);
+        
+        var people = new PIXI.Sprite.fromImage("res/people.jpg");
+        welcome1.addChild(people);
+        people.scale.x = 0.25;
+        people.scale.y = 0.25;
+        people.x = -250;
+        people.y = -10;
+        
+        var panda = new PIXI.Sprite.fromImage("res/panda.jpg");
+        welcome.addChild(panda);
+        panda.anchor.set(0.5,0.5);
+        panda.scale.x = 0.1;
+        panda.scale.y = 0.1;
+        panda.alpha = 0.7;
+        panda.x = 380;
+        panda.y = 0;
+        app.ticker.add(animate1);
+        function animate1(){
+        	panda.rotation += 0.05;
+        }
+        
+        var left2 = new PIXI.Sprite.fromImage("res/右箭头.jpg"); 
+        app.stage.addChild(left2);
+        left2.scale.x = 0.3;
+        left2.scale.y = 0.3;
+        left2.x = 380;
+        left2.y = 310;
+        left2.visible = false;
+        left2.interactive = true;
+        left2.on("click",enter1);
+        function enter1(){
+        	left2.visible = false;
+        	endpose.visible = true;
+        }
+        
+        var food1 = new PIXI.Sprite.fromImage("res/火锅.jpg");
+        left2.addChild(food1);
+        food1.scale.x = 0.8;
+        food1.scale.y = 0.8;
+        food1.x = -1100;
+        food1.y = -900;
+        
+        var food2 = new PIXI.Sprite.fromImage("res/糖油果子.jpg");
+        left2.addChild(food2);
+        food2.scale.x = 0.77;
+        food2.scale.y = 0.77;
+        food2.x = 0;
+        food2.y = -900;
+        
+        var food3 = new PIXI.Sprite.fromImage("res/红糖糍粑.jpg");
+        left2.addChild(food3);
+        food3.scale.x = 0.8;
+        food3.scale.y = 0.8;
+        food3.x = -500;
+        food3.y = -500;
+        
+        var food4 = new PIXI.Sprite.fromImage("res/甜水面.jpg");
+        left2.addChild(food4);
+        food4.scale.x = 0.8;
+        food4.scale.y = 0.8;
+        food4.x = -1100;
+        food4.y = -150;
+        
+        var right2 = new PIXI.Sprite.fromImage("res/左箭头.jpg");
+        app.stage.addChild(right2);
+        right2.scale.x = 0.3;
+        right2.scale.y = 0.3;
+        right2.height = 57.5;
+        right2.width = 80;
+        right2.x = 280;
+        right2.y = 310;
+        right2.visible = false;
+        right2.interactive = true;
+        right2.on("click",clickLeft2);
+        function clickLeft2(){
+        	enter();
+        }
+        
+        var endpose = new PIXI.Sprite.fromImage("res/诱惑.jpg");
+        app.stage.addChild(endpose);
+        endpose.scale.x = 0.3;
+        endpose.scale.y = 0.3;
+        endpose.x = 50;
+        endpose.y = 100;
+        endpose.visible = false;
+        
+        var end1 = new PIXI.Text("四川美食种类多,色香味俱全");
+        end1.x = 100;
+        end1.y = -200;
+        end1.style.fill = 0xffDAB9;//设置字体颜色    
+
+        end1.style.fontSize = 100;//设置字体大小    
+
+        end1.style.fontWeight = "bold";//加粗    
+
+        end1.style.fontStyle = "italic";//斜体    
+
+        end1.style.fontFamily = "行书";//设置字体    
+
+        endpose.addChild(end1);
+        
+        var end2 = new PIXI.Text("快来四川看看吧^_^");
+        end2.x = 700;
+        end2.y = 400;
+        end2.style.fill = 0xffDAFB;//设置字体颜色   
+        end2.style.fontSize = 80;//设置字体大小    
+        end2.style.fontWeight = "bold";//加粗    
+        end2.style.fontStyle = "italic";//斜体    
+        end2.style.fontFamily = "行书";//设置字体    
+        endpose.addChild(end2);
+    </script>
+</body>
+</html>
